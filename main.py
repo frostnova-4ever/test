@@ -4,14 +4,14 @@ import subprocess as sp
 from datetime import datetime
 
 class Pusher:
-    def __init__(self,folder_path = ".",msg="push",interval=30):
+    def __init__(self,folder_path = ".",msg="push",interval=30,repo_url = ""):
         self.folder_path = folder_path
         self.total_size = 0
         self.cur_size = 0
         self.change_threshold_kb = 10
         self.msg = msg
         self.interval = interval
-
+        self.repo_url = repo_url
     def scan_files(self):
         for root,dirs,files in os.walk(self.folder_path):
             if '.git' in root:
@@ -41,9 +41,9 @@ class Pusher:
         result = sp.run(["git", "remote", "-v"],
                                 capture_output=True, text=True)
         if not result.stdout.strip():
-            if repo_url:
-                print(f"🔗 配置远程仓库: {repo_url}")
-                subprocess.run(["git", "remote", "add", "origin", repo_url], check=True)
+            if self.repo_url:
+                print(f"🔗 配置远程仓库: {self.repo_url}")
+                sp.run(["git", "remote", "add", "origin", self.repo_url], check=True)
             else:
                 print("❌ 需要提供远程仓库URL")
                 return
@@ -67,7 +67,7 @@ class Pusher:
         self.polling_check()
 
 if __name__ == "__main__":
-    pusher = Pusher()
+    pusher = Pusher(repo_url=)
     pusher.start()
 
 
