@@ -40,6 +40,13 @@ class Pusher:
             sp.run(["git","init"])
         result = sp.run(["git", "remote", "-v"],
                                 capture_output=True, text=True)
+        if not result.stdout.strip():
+            if repo_url:
+                print(f"🔗 配置远程仓库: {repo_url}")
+                subprocess.run(["git", "remote", "add", "origin", repo_url], check=True)
+            else:
+                print("❌ 需要提供远程仓库URL")
+                return
     #推送
     def push(self):
         try:
