@@ -488,5 +488,5 @@ if __name__ == "__main__":
 
 
     # 运行示例
-    example_basic()
-    # example_with_callbacks()
+    # example_basic()
+    example_with_callbacks()
