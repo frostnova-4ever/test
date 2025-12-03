@@ -45,7 +45,6 @@ class Pusher:
                 sp.run(["git", "remote", "add", "origin", self.repo_url], check=True)
             else:
                 return
-        print(1)
         if result.stdout.strip():
             return True
     #推送
