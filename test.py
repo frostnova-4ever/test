@@ -48,6 +48,7 @@ class Pusher:
             if self.differ_checker():
                 self.push()
                 self.total_size = self.cur_size  # 推送后更新大小
+            print(1)
             time.sleep(self.interval)
 
     def setup_gitrepo(self):
