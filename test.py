@@ -78,7 +78,7 @@ class Pusher:
         else:
             print(f"   [INFO] Git仓库已存在")
 
-        result = sp.run(["git", "remote", "-v"], capture_output=True, text=True)
+        result = sp.run(["git", "remote", "-v"], capture_output=True, text=True, encoding='utf-8', errors='ignore')
         if not result.stdout.strip():
             if self.repo_url:
                 print(f"   [ACTION] 添加远程仓库: {self.repo_url}")
