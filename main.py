@@ -47,7 +47,8 @@ class Pusher:
             else:
                 print("❌ 需要提供远程仓库URL")
                 return
-        if result.
+        if result.stdout.strip():
+            return True
     #推送
     def push(self):
         try:
