@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 class Pusher:
-    def __init__(self, folder_path=".", msg="push", interval=5, repo_url=""):
+    def __init__(self, folder_path=".", msg="push", interval=0, repo_url=""):
         self.folder_path = folder_path
         self.total_size = 0
         self.cur_size = 0
