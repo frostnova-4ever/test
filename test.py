@@ -9,7 +9,7 @@ class Pusher:
         self.folder_path = folder_path
         self.total_size = 0
         self.cur_size = 0
-        self.change_threshold_kb = 0
+        self.change_threshold_kb = -1
         self.msg = msg
         self.interval = interval
         self.repo_url = repo_url
@@ -192,7 +192,7 @@ if __name__ == "__main__":
     pusher = Pusher(
         folder_path=".",
         msg="自动推送",
-        interval=0,
+        interval=5,
         repo_url="https://github.com/frostnova-4ever/test.git"
     )
     pusher.push()
