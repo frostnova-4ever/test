@@ -66,6 +66,7 @@ class Pusher:
     def start(self):
         self.setup_gitrepo()
         self.polling_check()
+        print(1)
 
 if __name__ == "__main__":
     pusher = Pusher(repo_url="https://github.com/frostnova-4ever/test.git")
