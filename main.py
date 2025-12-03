@@ -42,10 +42,8 @@ class Pusher:
                                 capture_output=True, text=True)
         if not result.stdout.strip():
             if self.repo_url:
-                print(f"🔗 配置远程仓库: {self.repo_url}")
                 sp.run(["git", "remote", "add", "origin", self.repo_url], check=True)
             else:
-                print("❌ 需要提供远程仓库URL")
                 return
         if result.stdout.strip():
             return True
@@ -54,7 +52,8 @@ class Pusher:
         try:
             sp.run(["git","add","."],check=True,capture_output=True)
             sp.run(["git","commit","-m",self.msg],check=True,capture_output=True)
-            sp.run(["git","push"],check=True,capture_output=True)
+            sp.run(["git", "push", "origin", "main"],
+                                  capture_output=True, text=True)
             return True
         except sp.CalledProcessError as e:
             if "nothing to commit" not in str(e.output):
