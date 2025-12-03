@@ -192,7 +192,7 @@ if __name__ == "__main__":
     pusher = Pusher(
         folder_path=".",
         msg="自动推送",
-        interval=10,
+        interval=0,
         repo_url="https://github.com/frostnova-4ever/test.git"
     )
     pusher.push()
