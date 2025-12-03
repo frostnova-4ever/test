@@ -38,6 +38,8 @@ class Pusher:
     def setup_gitrepo(self):
         if not os.path.exists("git"):
             sp.run(["git","init"])
+        result = sp.run(["git", "remote", "-v"],
+                                capture_output=True, text=True)
     #推送
     def push(self):
         try:
