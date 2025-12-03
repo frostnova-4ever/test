@@ -43,6 +43,7 @@ class Pusher:
         if not result.stdout.strip():
             if self.repo_url:
                 sp.run(["git", "remote", "add", "origin", self.repo_url], check=True)
+                print(1)
             else:
                 return
         if result.stdout.strip():
@@ -66,7 +67,6 @@ class Pusher:
     def start(self):
         self.setup_gitrepo()
         self.polling_check()
-        print(1)
 
 if __name__ == "__main__":
     pusher = Pusher(repo_url="https://github.com/frostnova-4ever/test.git")
