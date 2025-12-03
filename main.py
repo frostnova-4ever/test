@@ -36,6 +36,7 @@ class Pusher:
             time.sleep(self.interval)
 
     def setup_gitrepo(self):
+        print(1)
         if not os.path.exists("git"):
             sp.run(["git","init"])
         result = sp.run(["git", "remote", "-v"],
@@ -43,7 +44,6 @@ class Pusher:
         if not result.stdout.strip():
             if self.repo_url:
                 sp.run(["git", "remote", "add", "origin", self.repo_url], check=True)
-                print(1)
             else:
                 return
         if result.stdout.strip():
